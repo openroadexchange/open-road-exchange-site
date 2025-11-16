@@ -1,59 +1,88 @@
 
 const STORAGE_KEY="openRoadInventory";
-const ADMIN_USER="admin";
-const ADMIN_PASS="openroad123";
 
-function loadInventory(){
-  const d=localStorage.getItem(STORAGE_KEY);
-  return d?JSON.parse(d):[];
-}
-function saveInventory(list){
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(list));
-}
-
-let inventory=loadInventory();
-const loginSection=document.getElementById("loginSection");
-const adminSection=document.getElementById("adminSection");
-
-document.getElementById("loginBtn").onclick=()=>{
-  let u=document.getElementById("adminUser").value;
-  let p=document.getElementById("adminPass").value;
-  if(u===ADMIN_USER && p===ADMIN_PASS){
-    loginSection.style.display="none";
-    adminSection.style.display="block";
-    renderTable();
-  } else {
-    document.getElementById("loginError").textContent="Invalid login";
-  }
+// Role credentials
+const USERS = {
+  admin: { pass: "openroad123", role: "admin" },
+  manager: { pass: "manager123", role: "manager" },
+  viewer: { pass: "viewer123", role: "viewer" }
 };
 
+let currentRole = null;
+
+// Load/save
+function loadInventory(){ return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]"); }
+function saveInventory(data){ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+
+let inventory = loadInventory();
+
+// UI
+const loginSection = document.getElementById("loginSection");
+const adminSection = document.getElementById("adminSection");
+const roleDisplay = document.getElementById("roleDisplay");
+
+// Login handler
+document.getElementById("loginBtn").onclick = () => {
+  const u = document.getElementById("loginUser").value.trim();
+  const p = document.getElementById("loginPass").value.trim();
+
+  if (!USERS[u] || USERS[u].pass !== p) {
+    document.getElementById("loginError").textContent="Invalid login";
+    return;
+  }
+
+  currentRole = USERS[u].role;
+  loginSection.style.display="none";
+  adminSection.style.display="block";
+  roleDisplay.textContent = "Logged in as: " + currentRole.toUpperCase();
+
+  applyRolePermissions();
+  renderTable();
+};
+
+// Role restrictions
+function applyRolePermissions(){
+  const saveBtn = document.getElementById("saveBtn");
+  const resetBtn = document.getElementById("resetBtn");
+
+  if(currentRole === "viewer"){
+    saveBtn.disabled = true;
+    resetBtn.disabled = true;
+    document.getElementById("vehicleForm").querySelectorAll("input,select,textarea")
+      .forEach(el => el.disabled = true);
+  }
+
+  if(currentRole === "manager"){
+    // Can edit, cannot delete
+  }
+}
+
 function renderTable(){
-  const body=document.getElementById("inventoryTableBody");
+  const body = document.getElementById("inventoryTableBody");
   body.innerHTML="";
-  inventory.forEach((item)=>{
+  inventory.forEach(item=>{
     const tr=document.createElement("tr");
-    tr.innerHTML=`
+    tr.innerHTML = `
       <td>${item.title}</td>
       <td>${item.type}</td>
       <td>${item.year}</td>
       <td>${item.price}</td>
       <td>${item.status}</td>
-      <td><button onclick="editItem('${item.id}')">Edit</button>
-          <button onclick="deleteItem('${item.id}')">Delete</button></td>
+      <td>
+         <button onclick="editItem('${item.id}')">Edit</button>
+         ${ currentRole === "admin" ? `<button onclick="deleteItem('${item.id}')">Delete</button>` :
+           currentRole === "manager" ? "" : "" }
+      </td>
     `;
     body.appendChild(tr);
   });
 }
 
-function deleteItem(id){
-  inventory=inventory.filter(i=>i.id!==id);
-  saveInventory(inventory);
-  renderTable();
-}
-
 function editItem(id){
-  const it=inventory.find(i=>i.id===id);
-  if(!it)return;
+  if(currentRole==="viewer") return;
+  const it = inventory.find(i=>i.id===id);
+  if(!it) return;
+
   document.getElementById("vehicleId").value=it.id;
   document.getElementById("title").value=it.title;
   document.getElementById("type").value=it.type;
@@ -66,8 +95,18 @@ function editItem(id){
   document.getElementById("description").value=it.description;
 }
 
-document.getElementById("vehicleForm").onsubmit=(e)=>{
+function deleteItem(id){
+  if(currentRole!=="admin") return;
+  inventory = inventory.filter(i=>i.id!==id);
+  saveInventory(inventory);
+  renderTable();
+}
+
+// Save form
+document.getElementById("vehicleForm").onsubmit = e =>{
   e.preventDefault();
+  if(currentRole==="viewer") return;
+
   const id=document.getElementById("vehicleId").value || Date.now().toString();
   const data={
     id,
@@ -79,14 +118,16 @@ document.getElementById("vehicleForm").onsubmit=(e)=>{
     stock:document.getElementById("stock").value,
     status:document.getElementById("status").value,
     image:document.getElementById("image").value,
-    description:document.getElementById("description").value,
+    description:document.getElementById("description").value
   };
-  const idx=inventory.findIndex(i=>i.id===id);
+
+  const idx = inventory.findIndex(i=>i.id===id);
   if(idx>=0) inventory[idx]=data;
   else inventory.push(data);
+
   saveInventory(inventory);
   renderTable();
   document.getElementById("vehicleForm").reset();
 };
 
-document.getElementById("resetBtn").onclick=()=>document.getElementById("vehicleForm").reset();
+document.getElementById("resetBtn").onclick = ()=>document.getElementById("vehicleForm").reset();
