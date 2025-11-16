@@ -1,57 +1,15 @@
 
-body { margin:0; font-family:Arial; background:#f4f4f4; }
-
-/* Header */
-.header {
-  background:#111;
-  color:white;
-  display:flex;
-  justify-content:space-between;
-  padding:15px 30px;
-  align-items:center;
-}
-.header .logo { font-size:26px; font-weight:bold; }
-.header .logo span { color:#d32f2f; }
-.header nav a {
-  color:white; text-decoration:none; margin-left:20px; font-size:18px;
-}
-.header nav a:hover { color:#d32f2f; }
-
-/* Hero Section */
-.hero {
-  background:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;
-  color:white;
-  text-align:center;
-  padding:150px 20px;
-}
-.hero h1 { font-size:60px; margin-bottom:15px; }
-.hero p { font-size:22px; margin-bottom:25px; }
-.hero-btn {
-  background:#d32f2f; color:white; padding:12px 30px;
-  text-decoration:none; font-size:20px; border-radius:6px;
-}
-.hero-btn:hover { background:#b91c1c; }
-
-/* Categories */
-.categories { padding:40px; text-align:center; background:white; }
-.categories h2 { font-size:36px; margin-bottom:25px; }
-.cat-grid {
-  display:flex; justify-content:center; gap:30px; flex-wrap:wrap;
-}
-.cat-card {
-  width:300px; background:#f9f9f9; border-radius:10px; overflow:hidden;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-.cat-card img { width:100%; height:200px; object-fit:cover; }
-.cat-card h3 { padding:15px; font-size:24px; }
-
-/* About */
-.about { padding:40px; text-align:center; background:#f4f4f4; }
-.about h2 { font-size:32px; margin-bottom:15px; }
-.about p { max-width:700px; margin:auto; font-size:20px; }
-
-/* Footer */
-.footer {
-  background:#111; color:white; text-align:center; padding:15px;
-  margin-top:40px;
-}
+body{font-family:Arial;margin:0;background:#f4f4f4;}
+.header{background:#111;color:white;padding:15px 30px;
+display:flex;justify-content:space-between;align-items:center;}
+.header nav a{color:white;margin-left:20px;text-decoration:none;}
+.logo span{color:#d32f2f;}
+.hero{background:#333;color:white;padding:120px 20px;text-align:center;}
+.hero-btn{background:#d32f2f;color:white;padding:12px 30px;text-decoration:none;}
+.featured{padding:40px;background:white;text-align:center;}
+#featuredGrid{display:flex;gap:20px;justify-content:center;}
+.feat-card{background:#eee;padding:20px;border-radius:8px;width:250px;}
+.categories{padding:40px;text-align:center;background:#fff;}
+.cat-grid{display:flex;gap:20px;justify-content:center;}
+.cat-card{width:200px;background:#eee;padding:20px;border-radius:10px;}
+.form{max-width:400px;margin:auto;display:flex;flex-direction:column;gap:12px;}

@@ -1,60 +1,27 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Open Road Exchange</title>
-<link rel="stylesheet" href="styles.css">
-</head>
+<html>
+<head><meta charset="UTF-8"><title>Open Road Exchange</title>
+<link rel="stylesheet" href="styles.css"></head>
+<body>
+<header class="header"><div class="logo">OPEN ROAD <span>EXCHANGE</span></div>
+<nav><a href="index.html">Home</a><a href="inventory.html">Inventory</a>
+<a href="finance.html">Finance</a><a href="tradein.html">Trade‑In</a>
+<a href="contact.html">Contact</a><a href="admin.html">Admin</a></nav></header>
 
-<body class="home">
+<section class="hero"><h1>Hit The Open Road</h1>
+<p>Your source for RVs, Trucks, and Trailers.</p>
+<a class="hero-btn" href="inventory.html">Browse Inventory</a></section>
 
-<header class="header">
-  <div class="logo">OPEN ROAD <span>EXCHANGE</span></div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="inventory.html">Inventory</a>
-    <a href="admin.html">Admin</a>
-  </nav>
-</header>
+<section class="featured"><h2>Featured Inventory</h2>
+<div id="featuredGrid"></div></section>
 
-<section class="hero">
-  <h1>Hit The Open Road</h1>
-  <p>Your source for RVs, Trucks, and Trailers — all in one place.</p>
-  <a class="hero-btn" href="inventory.html">Browse Inventory</a>
-</section>
+<section class="categories"><h2>Shop by Category</h2>
+<div class="cat-grid">
+<div class="cat-card"><img src="icon-rv.png"><h3>RVs</h3></div>
+<div class="cat-card"><img src="icon-truck.png"><h3>Trucks</h3></div>
+<div class="cat-card"><img src="icon-trailer.png"><h3>Trailers</h3></div>
+</div></section>
 
-<section class="categories">
-  <h2>Shop by Category</h2>
-
-  <div class="cat-grid">
-    <div class="cat-card">
-      <img src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=800&q=60">
-      <h3>RVs</h3>
-    </div>
-
-    <div class="cat-card">
-      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=60">
-      <h3>Trucks</h3>
-    </div>
-
-    <div class="cat-card">
-      <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=800&q=60">
-      <h3>Trailers</h3>
-    </div>
-  </div>
-</section>
-
-<section class="about">
-  <h2>Why Choose Us?</h2>
-  <p>
-    At Open Road Exchange, we provide high‑quality RVs, trucks, and trailers with transparent pricing and a fast, simple buying experience.
-  </p>
-</section>
-
-<footer class="footer">
-  © 2025 Open Road Exchange — All Rights Reserved
-</footer>
-
-</body>
-</html>
+<footer class="footer">© 2025 Open Road Exchange</footer>
+<script src="featured.js"></script>
+</body></html>
