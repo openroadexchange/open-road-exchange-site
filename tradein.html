@@ -1,22 +1,105 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><title>Trade‑In</title>
-<link rel="stylesheet" href="styles.css"></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trade-In Evaluation • Open Road Exchange</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
 <body>
-<header class="header"><div class="logo">OPEN ROAD <span>EXCHANGE</span></div>
-<nav><a href="index.html">Home</a><a href="inventory.html">Inventory</a></nav></header>
 
-<h1>Trade‑In Evaluation</h1>
-<p>Get a fast and accurate trade‑in valuation.</p>
+<header>
+  <img src="logo.png" alt="Open Road Exchange" class="logo">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="finance.html">Financing</a>
+    <a href="tradein.html">Trade-In</a>
+    <a href="service.html">Service & Warranty</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+</header>
 
-<form class="form">
-<label>Your Name<input></label>
-<label>Email<input></label>
-<label>Year<input></label>
-<label>Make<input></label>
-<label>Model<input></label>
-<label>Mileage<input></label>
-<label>Condition<select><option>Excellent</option><option>Good</option><option>Fair</option></select></label>
-<button>Get Offer</button>
-</form>
+<div class="main-wrapper">
 
-</body></html>
+  <section class="hero">
+    <h1>Trade-In Evaluation</h1>
+    <p>Trade in your RV, truck, trailer, boat, motorcycle, golf cart, or other specialty unit.  
+    Get a fair and fast market-based appraisal.</p>
+  </section>
+
+  <section class="form-card">
+
+    <h2>Your Contact Info</h2>
+
+    <form>
+
+      <label>Full Name
+        <input type="text" required>
+      </label>
+
+      <label>Email
+        <input type="email" required>
+      </label>
+
+      <label>Phone
+        <input type="tel" required>
+      </label>
+
+      <h3 style="margin-top:20px;">Vehicle Being Traded</h3>
+
+      <label>Year
+        <input type="text">
+      </label>
+
+      <label>Make
+        <input type="text">
+      </label>
+
+      <label>Model
+        <input type="text">
+      </label>
+
+      <label>Mileage / Hours
+        <input type="text">
+      </label>
+
+      <label>Type
+        <select>
+          <option>RV</option>
+          <option>Truck</option>
+          <option>Trailer</option>
+          <option>Misc (boat, motorcycle, golf cart, etc.)</option>
+        </select>
+      </label>
+
+      <label>Overall Condition
+        <select>
+          <option>Excellent</option>
+          <option>Very Good</option>
+          <option>Good</option>
+          <option>Fair</option>
+          <option>Needs Work</option>
+        </select>
+      </label>
+
+      <label>Options / Upgrades / Notes
+        <textarea rows="4"></textarea>
+      </label>
+
+      <button class="button" disabled>Submit (demo only)</button>
+
+    </form>
+  </section>
+
+</div>
+
+<div class="footer">
+  © 2025 Open Road Exchange — RV • Truck • Trailer • Misc
+</div>
+
+</body>
+</html>
+
