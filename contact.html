@@ -1,16 +1,86 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><title>Contact Us</title>
-<link rel="stylesheet" href="styles.css"></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact • Open Road Exchange</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
 <body>
-<header class="header"><div class="logo">OPEN ROAD <span>EXCHANGE</span></div>
-<nav><a href="index.html">Home</a><a href="inventory.html">Inventory</a></nav></header>
 
-<h1>Contact Us</h1>
-<p>Hours: Mon–Sat 9am–6pm</p>
-<p>Phone: (555) 555‑1212</p>
-<p>Email: sales@openroadexchange.com</p>
+<header>
+  <img src="logo.png" class="logo" alt="Open Road Exchange">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="finance.html">Financing</a>
+    <a href="tradein.html">Trade-In</a>
+    <a href="service.html">Service & Warranty</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+</header>
 
-<h2>Location</h2>
-<iframe width="100%" height="300" src="https://maps.google.com/maps?q=Denver&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+<div class="main-wrapper">
 
-</body></html>
+  <section class="hero">
+    <h1>Contact Open Road Exchange</h1>
+    <p>Have questions about inventory, financing, service, warranties, or trade-ins? We're here to help.</p>
+  </section>
+
+  <section class="form-card">
+    <h2>Contact Form</h2>
+    <form>
+      <label>Name
+        <input type="text" required>
+      </label>
+
+      <label>Email
+        <input type="email" required>
+      </label>
+
+      <label>Phone
+        <input type="tel">
+      </label>
+
+      <label>How can we help?
+        <select>
+          <option>Sales / Inventory Question</option>
+          <option>Financing</option>
+          <option>Trade-In</option>
+          <option>Service / Warranty</option>
+          <option>Other</option>
+        </select>
+      </label>
+
+      <label>Message
+        <textarea rows="4"></textarea>
+      </label>
+
+      <button class="button" disabled>Submit (demo only)</button>
+    </form>
+  </section>
+
+  <section class="form-card">
+    <h2>Dealership Information</h2>
+
+    <p><strong>Address:</strong><br>
+    123 Open Road Blvd<br>Your City, ST 00000</p>
+
+    <p><strong>Phone:</strong> (555) 555-1212</p>
+    <p><strong>Email:</strong> sales@openroadexchange.com</p>
+
+    <p><strong>Hours:</strong><br>
+    Monday–Saturday: 9:00 AM – 6:00 PM<br>
+    Sunday: By appointment</p>
+  </section>
+
+</div>
+
+<div class="footer">
+  © 2025 Open Road Exchange — RV • Truck • Trailer • Misc
+</div>
+
+</body>
+</html>
